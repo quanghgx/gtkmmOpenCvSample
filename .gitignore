@@ -8,3 +8,4 @@ build-*
 /Makefile
 /README.md
 /compile_commands.json
+opencv_gtkmm3_barebone

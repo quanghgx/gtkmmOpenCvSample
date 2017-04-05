@@ -17,6 +17,7 @@ find_package(OpenCV REQUIRED)
 
 # For gtkmm3
 pkg_check_modules(PKG REQUIRED gtkmm-3.0)
+include_directories(${PKG_INCLUDE_DIRS})
 link_libraries(${PKG_LIBRARIES})
 link_directories(${PKG_LIBRARY_DIRS})
 
