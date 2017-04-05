@@ -1,3 +1,10 @@
 build/
 build-*
 *.user
+/CMakeCache.txt
+/cmake_install.cmake
+/CMakeFiles/
+/nbproject/
+/Makefile
+/README.md
+/compile_commands.json
