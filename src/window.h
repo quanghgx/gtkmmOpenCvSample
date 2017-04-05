@@ -13,6 +13,7 @@ public:
     window_t();
     ~window_t();
 
+private:
     cv::VideoCapture cv_video_capture;
     cv::Mat frame_from_video_capture_thread;
     cv::Mat camMat;

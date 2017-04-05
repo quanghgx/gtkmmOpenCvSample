@@ -26,3 +26,9 @@ aux_source_directory(src/ SRC_LIST)
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 target_link_libraries(${PROJECT_NAME} Threads::Threads ${OpenCV_LIBS})
+
+# ------------------------------------------------------------------
+message(STATUS "Configuration status:")
+message(STATUS "    opencv: version: ${OpenCV_VERSION}")
+message(STATUS "            libraries: ${OpenCV_LIBS}")
+message(STATUS "            include path: ${OpenCV_INCLUDE_DIRS}")
