@@ -24,6 +24,17 @@ private:
     std::atomic_bool is_cam_closed;
 
     Glib::Dispatcher signal_new_frame_ready;
+
+    void set_frame(const cv::Mat& frame) {
+        std::lock_guard<std::mutex> guard(capture_mutex);
+        frame_from_video_capture_thread = frame.clone();
+        signal_new_frame_ready.emit();
+    };
+
+    cv::Mat get_frame() {
+        std::lock_guard<std::mutex> guard(capture_mutex);
+        return frame_from_video_capture_thread.clone();
+    }
 };
 
 #endif // WINDOW_H

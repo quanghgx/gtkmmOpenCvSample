@@ -17,21 +17,14 @@ window_t::window_t() {
         is_cam_closed = false;
         while (cv_video_capture.isOpened() && !is_cam_closed) {
             if (cv_video_capture.read(frame)) {
-                capture_mutex.lock();
-                        frame_from_video_capture_thread = frame.clone();
-                        capture_mutex.unlock();
-                        signal_new_frame_ready.emit();
+                set_frame(frame);
             }
         }
     });
 
     /* copy camera mat in thread*/
     signal_new_frame_ready.connect([&] {
-        capture_mutex.lock();
-        camMat = frame_from_video_capture_thread.clone();
-        capture_mutex.unlock();
-
-        cv_view.set_cv_mat(camMat);
+        cv_view.set_cv_mat(get_frame());
     });
 }
 
